@@ -56,25 +56,22 @@ Figure -02 HALF Subtractor
 
 Developed by: NAKUL R
 RegisterNumber:212223240102
-*Half_adder*
-module halfadd_top(a,b,sum,carry);
-input a,b;
-output sum,carry; 
- assign sum = a^b;
- assign carry = a & b;
+module exp03(a,b,sum,carry,D,Bo); 
+input a,b; 
+output sum,carry,D,Bo;
+xor g1(sum,a,b);
+and g2(carry,a,b); 
+wire abar; 
+not g3(abar,a); 
+xor g4(D,a,b); 
+and g5(Bo,abar,b); 
 endmodule
-
-*Half_subtractor*
-module halfsub_top(a,b,D,Bo);
-input a,b;
-output D,Bo; // Outputs sum and carry for half adder:Outputs difference D,Borrow Bo for half subtractor
-assign D = a ^ b;
-  assign Bo = ~a & b;
-endmodule
-
 
 **RTL Schematic**
+![Screenshot 2024-10-24 082628](https://github.com/user-attachments/assets/2bea051f-80a8-43b4-887d-d204f5a276a5)
 
 **Output/TIMING Waveform**
+![Screenshot 2024-10-24 082648](https://github.com/user-attachments/assets/7be4fb61-fd05-4b45-a372-3426702019a5)
 
 **Result:**
+Therefore we got the design of a half adder and half subtractor circuit and verify its truth table in Quartus using Verilog programming.
